@@ -13,7 +13,7 @@ import (
 	"net/http"
 )
 
-func GetNotesHandler(w http.ResponseWriter, request *http.Request) {
+func GetNotesHandler(_ http.ResponseWriter, request *http.Request) {
 	log.Println("GetNotesHandler work")
 
 	userID := middleware.AuthorizedUsersOnly(request)
@@ -28,14 +28,6 @@ func GetNotesHandler(w http.ResponseWriter, request *http.Request) {
 
 	log.Println(notesJSON)
 	log.Println("GetNotesHandler end")
-
-	//unmarshall проверка
-	/*var note []model.Note
-	err = json.Unmarshal(notesJSON, &note)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	log.Println(note)*/
 }
 
 func StoreNoteHandler(w http.ResponseWriter, request *http.Request) {
